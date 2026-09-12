@@ -1,0 +1,42 @@
+name: DokodemoBackroom
+options:
+  bundleIdPrefix: com.ksaotome
+  deploymentTarget:
+    iOS: "18.0"
+  xcodeVersion: "26.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    # 実機インストール用の署名チーム(Personal Team)。xcodegen 再生成で消えないようここに置く
+    DEVELOPMENT_TEAM: PVLPVC2YL3
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+
+targets:
+  DokodemoBackroom:
+    type: application
+    platform: iOS
+    sources:
+      - path: DokodemoBackroom
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ksaotome.dokodemo-backroom
+        PRODUCT_NAME: DokodemoBackroom
+        INFOPLIST_FILE: DokodemoBackroom/Resources/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+
+  DokodemoBackroomTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: DokodemoBackroomTests
+    dependencies:
+      - target: DokodemoBackroom
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ksaotome.dokodemo-backroomTests
+        GENERATE_INFOPLIST_FILE: YES
